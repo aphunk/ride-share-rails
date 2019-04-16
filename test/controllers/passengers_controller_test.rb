@@ -38,10 +38,11 @@ describe PassengersController do
 
   describe "update" do
     it "can update an existing Passenger" do
-      passenger = Passenger.create!(name: "Bebop Phung")
+      passenger = Passenger.create!(name: "Bebop Phung", phone_num: "555555")
       passenger_data = {
         passenger: {
           name: "Bebop Houle",
+          phone_num: "1234567",
         },
       }
 
@@ -53,8 +54,27 @@ describe PassengersController do
       passenger.reload
       expect(passenger.name).must_equal(passenger_data[:passenger][:name])
     end
-    
-    
+
+    it "responds with BAD REQUEST for bad data" do
+      passenger = Passenger.create(name: "Test passenger", phone_num: "bbbb")
+      # Arrange
+      passenger_data = {
+        passenger: {
+          name: "",
+          phone_num: "",
+        },
+      }
+      # Assumptions
+      passenger.assign_attributes(passenger_data[:passenger])
+      expect(passenger).wont_be :valid?
+      passenger.reload
+
+      # Act
+      patch passenger_path(passenger), params: passenger_data
+
+      # Assert
+      must_respond_with :bad_request
+    end
   end
 
   describe "new" do

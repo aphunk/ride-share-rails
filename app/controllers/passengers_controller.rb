@@ -26,11 +26,14 @@ class PassengersController < ApplicationController
 
     unless @passenger
       redirect_to passengers_path, :flash => { :error => "Could not find passenger with id: #{passenger_id}" }
+      return
     end
 
-    @passenger.update(passenger_params)
-
-    redirect_to passenger_path(@passenger)
+    if @passenger.update(passenger_params)
+      redirect_to passenger_path(@passenger)
+    else
+      render :edit, status: :bad_request
+    end
   end
 
   def new
