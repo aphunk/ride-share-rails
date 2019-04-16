@@ -53,6 +53,8 @@ describe PassengersController do
       passenger.reload
       expect(passenger.name).must_equal(passenger_data[:passenger][:name])
     end
+    
+    
   end
 
   describe "new" do
