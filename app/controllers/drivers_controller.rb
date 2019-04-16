@@ -40,6 +40,10 @@ class DriversController < ApplicationController
     end
   end
 
+  def new
+    @driver = Driver.new
+  end
+
   private
 
   def driver_params
