@@ -1,0 +1,19 @@
+<h1>Edit Driver </h1>
+
+
+<%= form_for @driver do |f| %>
+    <p>Please enter the information you would like to edit</p>
+    
+    <div>
+        <%= f.label :name, 'Please enter the desired name' %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label 'Please enter the task description' %>
+        <%= f.text_field :vin %>
+    </div>
+
+  <%= f.submit "Submit" %>
+
+<% end %>
