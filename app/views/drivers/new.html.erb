@@ -1,0 +1,18 @@
+<h2>New Driver Form</h2>
+
+<%= form_with model: @driver, class: 'driver-form' do |f|%>
+    <p>Please fill out this driver's information</p>
+    
+    <div>
+        <%= f.label :name, "Please enter the new driver" %>
+        <%= f.text_field :name, placeholder: "Driver Name" %>
+    </div>
+
+    <div>
+        <%= f.label :vin %>
+        <%= f.text_field :vin, placeholder: "Vin Number"%>
+    </div>
+
+    <%= f.submit "Submit" %>
+
+<% end %>
