@@ -3,7 +3,11 @@ require "test_helper"
 describe DriversController do
   describe "index" do
     it "can get index" do
-      # Your code here
+      # Act
+      get drivers_path
+
+      # Assert
+      must_respond_with :success
     end
   end
 
