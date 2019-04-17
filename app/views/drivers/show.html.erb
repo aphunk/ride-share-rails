@@ -6,6 +6,11 @@
 <p>
   VIN: <%= @driver.vin %>
 </p>
+<p>
+  Average Rating: <%= @driver.average_rating %>
+</p>
+<p>
+  Total Revenue: <%= @driver.total_revenue %>
 
 <%= link_to "Edit Driver", edit_driver_path(@driver.id) %>
 <%= link_to "Delete", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure?"} %> 
