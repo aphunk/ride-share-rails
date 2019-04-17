@@ -1,1 +1,12 @@
-<h2>Passenger Show Page</h2>
+<h1>Passenger Show Page</h1>
+
+<p>
+  Name: <%= @passenger.name %>
+</p>
+<p>
+  Phone number: <%= @passenger.phone_num %>
+</p>
+
+<%= link_to "Edit passenger", edit_passenger_path(@passenger.id) %>
+<%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> 
+
