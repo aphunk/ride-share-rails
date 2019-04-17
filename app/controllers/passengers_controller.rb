@@ -58,7 +58,7 @@ class PassengersController < ApplicationController
     end
     
     if @passenger.destroy
-      redirect_to passengers_path
+      redirect_to passengers_path, flash[:notice] = "Passenger successfully deleted"
     else
       render :edit, status: :bad_request
     end
