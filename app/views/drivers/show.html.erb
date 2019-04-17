@@ -3,7 +3,10 @@
 <p>
   Driver: <%= @driver.name %>
 </p>
+<p>
+  VIN: <%= @driver.vin %>
+</p>
 
-<%# <%= link_to "Edit Task", edit_task_path(@driver.id) %>
-<%# <%= link_to "Delete", task_path(@driver.id), method: :delete, data: {confirm: "Are you sure?"} %> 
+<%= link_to "Edit Driver", edit_driver_path(@driver.id) %>
+<%= link_to "Delete", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure?"} %> 
 
