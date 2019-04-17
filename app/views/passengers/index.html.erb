@@ -1,12 +1,16 @@
-<h2>Passengers Index</h2>
+<div class ="container">
+  <header>
+    <h1>Passengers Index</h1>
+  </header>
 
-<% @passengers.each do |passenger| %>
-  <%= image_tag "til-the-end.png" %>
-  <%= link_to passenger.name, passenger_path(passenger.id) %><br>
-  <%= link_to "Edit", edit_passenger_path(passenger.id) %>
-  <%= link_to "Delete", passenger_path(passenger.id), method: :delete, data: { confirm: "Are you sure you want to remove this passenger?" } %>
-<% end %>
-
-
-  <%# <%= passenger.name %>
-  <%# <%= passenger.phone_num %>
+  <ul class="profiles">
+    <% @passengers.each do |passenger| %>
+      <li>
+      <%= image_tag "til-the-end.png" %>
+      <%= link_to passenger.name, passenger_path(passenger.id) %>
+      <%= link_to "Edit", edit_passenger_path(passenger.id) %>
+      <%= link_to "Delete", passenger_path(passenger.id), method: :delete, data: { confirm: "Are you sure you want to remove this passenger?" } %>
+    <% end %>
+    </li>
+  </ul>
+</div>
