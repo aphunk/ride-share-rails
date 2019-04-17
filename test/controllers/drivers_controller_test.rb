@@ -97,7 +97,6 @@ describe DriversController do
     end
 
     it "responds with BAD REQUEST for bad data" do
-      driver = Driver.create(name: "Test Driver", vin: "1FUJA6CG57LY48020")
       # Arrange
       driver_data = {
         driver: {
@@ -131,6 +130,8 @@ describe DriversController do
 
   describe "create" do
     it "creates a new driver" do
+      driver = Driver.create(name: "Test Driver", vin: "1FUJA6CG57LY48020")
+
       # Arrange
       driver_data = {
         driver: {
@@ -155,6 +156,35 @@ describe DriversController do
   end
 
   describe "destroy" do
-    # Your tests go here
+    it "removes the driver from the database" do
+      driver = Driver.create(name: "Test Driver", vin: "1FUJA6CG57LY48020")
+      # Act
+      expect {
+        delete driver_path(driver)
+      }.must_change "Driver.count", -1
+
+      # Assert
+      must_respond_with :redirect
+      must_redirect_to drivers_path
+
+      after_driver = Driver.find_by(id: driver.id)
+      expect(after_driver).must_be_nil
+    end
+
+    it "returns a 404 if the driver does not exist" do
+      # Arrange
+      driver_id = -1
+
+      # Assumptions
+      expect(Driver.find_by(id: driver_id)).must_be_nil
+
+      # Act
+      expect {
+        delete driver_path(driver_id)
+      }.wont_change "Driver.count"
+
+      # Assert
+      must_respond_with :not_found
+    end
   end
 end
