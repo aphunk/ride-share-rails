@@ -1,15 +1,15 @@
-<%= form_with model: @task, class: form_class do |task| %>
+<%= form_with model: @passenger, class: form_class do |passenger| %>
   
   <div class="form_input">
-    <%= task.label :name%>
-    <%= task.text_field :name, placeholder: "Passenger name" %>
+    <%= passenger.label :name%>
+    <%= passenger.text_field :name, placeholder: "Passenger name" %>
   </div>
   
   <div class="form_input">
-    <%= task.label :phone_num %>
-    <%= task.text_field :phone_num, placeholder: "1234567890" %>
+    <%= passenger.label :phone_num %>
+    <%= passenger.text_field :phone_num, placeholder: "1234567890" %>
   </div>
   
-  <%= task.submit action_name, class: "button" %>
+  <%= passenger.submit action_name, class: "button" %>
   
 <% end %>
