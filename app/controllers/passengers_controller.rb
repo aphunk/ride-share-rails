@@ -47,6 +47,22 @@ class PassengersController < ApplicationController
 
     redirect_to passengers_path
   end
+  
+  def destroy
+    passenger_id = params[:id]
+    @passenger = Passenger.find_by(id: passenger_id)
+    
+    unless @task
+      head :not_found
+      return
+    end
+    
+    if @passenger.destroy
+      redirect_to passengers_path
+    else
+      render :edit, status: :bad_request
+    end
+  end
 
   private
 
