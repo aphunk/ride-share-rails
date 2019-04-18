@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :passengers do
-    resources :trips, except: [:index, :new]
+    resources :trips, only: [:index, :new]
   end
 
   resources :drivers do
-    resources :trips, except: [:index, :new]
+    resources :trips, only: [:index, :new]
   end
 end
