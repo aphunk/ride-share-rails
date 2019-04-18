@@ -7,9 +7,11 @@
     <% @passengers.each do |passenger| %>
       <li>
       <%= image_tag "til-the-end.png" %>
-      <%= link_to passenger.name, passenger_path(passenger.id) %>
-      <%= link_to "Edit", edit_passenger_path(passenger.id) %>
-      <%= link_to "Delete", passenger_path(passenger.id), method: :delete, data: { confirm: "Are you sure you want to remove this passenger?" } %>
+      <h4><%= link_to passenger.name, passenger_path(passenger.id) %></h4>
+      <div class="actions">
+        <%= link_to "Edit", edit_passenger_path(passenger.id) %>
+        <%= link_to "Delete", passenger_path(passenger.id), method: :delete, data: { confirm: "Are you sure you want to remove this passenger?" } %>
+      </div>
     <% end %>
     </li>
   </ul>

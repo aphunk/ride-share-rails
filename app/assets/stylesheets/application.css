@@ -1,3 +1,11 @@
+* {
+    font-family: 'Helvetica', sans-serif;
+}
+
+main {
+  margin: 2rem 5rem;
+}
+
 img {
   width: 200px;
   height: auto;
@@ -5,7 +13,7 @@ img {
 }
 
 a {
-  color: rgb(97, 82, 116);
+  color: rgb(17, 184, 170);
   text-decoration: none;
 }
 
@@ -14,13 +22,12 @@ a:hover {
 }
 
 nav {
-  margin: 2.5rem 0 1rem .5rem;
-  background-color:  rgb(97, 82, 116);
+  padding: 1.5rem 0 1.5rem 0;
+  background-color:  white;
 }
 
 nav a {
-  color: white;
-  font-family: 'Helvetica', sans-serif;
+  color: rgb(97, 82, 116);
 }
 
 nav ul {
@@ -36,7 +43,7 @@ ul {
 display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* see notes below */
   grid-auto-rows: minmax(200px, auto);
-  grid-gap: 5rem;
+  grid-gap: 1rem 5rem;
 }
 
 li {
@@ -44,7 +51,20 @@ display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
-  color: #5d5e5e;
+  color: #141414;
   margin: 2rem;
   padding: 1rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+div.actions {
+  display: flex;
+  flex-flow: row wrap;  
+}
+
+.actions a {
+  margin-right: 1rem;
 }
