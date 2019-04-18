@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :passengers do
-    resources :trips, only: [:index, :new]
+    resources :trips, only: [:index, :new, :create]
   end
 
   resources :drivers do
