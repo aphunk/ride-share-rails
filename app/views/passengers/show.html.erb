@@ -1,24 +1,34 @@
-<h1>Passenger Show Page</h1>
+<h1>Passenger Details</h1>
 
-<p>
-  Name: <%= @passenger.name %>
-</p>
+<h4>
+<%= @passenger.name %>
+</h4>
+<p>ID:  <%= @passenger.id %></p>
 <p>
   Phone number: <%= @passenger.phone_num %>
 </p>
 
 <%= link_to "Edit passenger", edit_passenger_path(@passenger.id) %>
 <%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> 
-<%= link_to "Request trip", passenger_path(@passenger.id), method: :get %>
+<%= link_to "Request trip", passenger_trips_path(@passenger.id), method: :post %>
 
 <h3>Trips</h3>
-<ul class="trip-data">
-  <% @passenger.trips.each do |trip|%>
-    <li><%= trip.id %></li>
-    <li><%= trip.driver_id %></li>
-    <li><%= trip.passenger_id %></li>
-    <li><%= trip.date %></li>
-    <li><%= trip.rating %></li>
-    <li>$<%= trip.cost %></li>
-  <% end %>
-</ul>
+<table class="trip-data">
+  <colgroup span="5"></colgroup>
+    <tr>
+      <th>Trip ID</th>
+      <th>Driver</th>
+      <th>Date</th>
+      <th>Rating</th>
+      <th>Cost</th>
+    </tr>
+    <% @passenger.trips.each do |trip|%>
+      <tr>
+        <td><%= trip.id %></td>
+        <td><%= Driver.find_by(id: trip.driver_id).name %></td>
+        <td><%= trip.date %></td>
+        <td><%= trip.rating %></td>
+        <td>$<%= trip.cost %></td>
+      </tr>
+    <% end %>
+</table>

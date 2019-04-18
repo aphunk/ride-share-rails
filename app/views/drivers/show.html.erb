@@ -1,8 +1,8 @@
 <!-- app/views/website/index.html.erb -->
 <h1>Driver Details</h1>
-
+<h4> <%= @driver.name %> </h4>
 <p>
-  Name: <%= @driver.name %>
+ ID: <%= @driver.id %>
 </p>
 <p>
   VIN: <%= @driver.vin %>
@@ -12,18 +12,28 @@
 </p>
 <p>
   Total Revenue: <%= @driver.total_revenue %>
+</p>
 
 <%= link_to "Edit Driver", edit_driver_path(@driver.id) %>
-<%= link_to "Delete", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure?"} %> 
+<%= link_to "Delete", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure?"} %>
 
 <h3>Trips</h3>
-<ul class="trip-data">
-  <% @driver.trips.each do |trip|%>
-    <li><%= trip.id %></li>
-    <li><%= trip.driver_id %></li>
-    <li><%= trip.passenger_id %></li>
-    <li><%= trip.date %></li>
-    <li><%= trip.rating %></li>
-    <li>$<%= trip.cost %></li>
-  <% end %>
-</ul>
+<table class="trip-data">
+  <colgroup span="5"></colgroup>
+    <tr>
+      <th>Trip ID</th>
+      <th>Passenger</th>
+      <th>Date</th>
+      <th>Rating</th>
+      <th>Cost</th>
+    </tr>
+    <% @driver.trips.each do |trip|%>
+      <tr>
+        <td><%= trip.id %></td>
+        <td><%= Passenger.find_by(id: trip.passenger_id).name %></td>
+        <td><%= trip.date %></td>
+        <td><%= trip.rating %></td>
+        <td>$<%= trip.cost %></td>
+      </tr>
+    <% end %>
+</table>

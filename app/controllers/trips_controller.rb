@@ -25,11 +25,17 @@ class TripsController < ApplicationController
   end
   
   def create
-    @trip = Trip.new(trip_params)
+    trip_data = {
+      passenger_id: params[:passenger_id],
+      driver_id: 1,
+      rating: nil
+    }
+    
+    @trip = Trip.new(trip_data)
     
     successful = @trip.save
     if successful
-      redirect_to passenger_trips_path
+      redirect_to passenger_path(params[:passenger_id])
     else
       render :new, status: :bad_request
     end
