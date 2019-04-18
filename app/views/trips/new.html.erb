@@ -1,0 +1,21 @@
+<h1>Add a Trip</h1>
+
+<%= form_with model: @trips, class: 'form' do |f|%>
+    <p>Please enter new trip information</p>
+    
+    <div>
+        <%= f.label :name, "Driver" %>
+        <%= f.text_field :name, placeholder: "Driver Name" %>
+    </div>
+    
+    <div>
+        <%= f.hidden_field :passenger_id %>
+
+    <div>
+        <%= f.label :rating %>
+        <%= f.text_field :rating, placeholder: ""%>
+    </div>
+
+    <%= f.submit "Submit" %>
+
+<% end %>
