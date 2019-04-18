@@ -28,7 +28,8 @@ class TripsController < ApplicationController
     trip_data = {
       passenger_id: params[:passenger_id],
       driver_id: 1,
-      rating: nil
+      rating: nil,
+      date: Date.today
     }
     
     @trip = Trip.new(trip_data)
