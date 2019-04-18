@@ -45,7 +45,11 @@ class PassengersController < ApplicationController
 
     @passenger.save
 
-    redirect_to passengers_path
+    unless @passenger
+    redirect_to passenger_path(@passenger), flash[:notice] = "Passenger created!"
+    else
+      render :new, :flash => { :error => "Could not create passenger"  }
+    end
   end
   
   def destroy

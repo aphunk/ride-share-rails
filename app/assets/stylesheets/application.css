@@ -13,7 +13,7 @@ img {
 }
 
 a {
-  color: rgb(17, 184, 170);
+  color: rgb(57, 198, 233);
   text-decoration: none;
 }
 
@@ -27,7 +27,7 @@ nav {
 }
 
 nav a {
-  color: rgb(97, 82, 116);
+  color: rgb(57, 198, 233);
 }
 
 nav ul {
@@ -51,20 +51,34 @@ display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
-  color: #141414;
+  color: #272727;
   margin: 2rem;
   padding: 1rem;
 }
 
 h4 {
   font-size: 1.25rem;
+  color: #272727;
+  margin-bottom: 1rem;
 }
 
 div.actions {
   display: flex;
-  flex-flow: row wrap;  
+  flex-flow: row wrap; 
+  justify-content: flex-start 
 }
 
 .actions a {
-  margin-right: 1rem;
+  margin: 1rem 1rem 0 0;
+}
+
+.form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  max-width: 30vw;
+}
+
+.form div {
+  margin-bottom: 10px;
 }
