@@ -25,11 +25,14 @@ class TripsController < ApplicationController
   end
   
   def create
+  driver = Driver.find_by(status: "available")
+  
     trip_data = {
       passenger_id: params[:passenger_id],
-      driver_id: 1,
       rating: nil,
-      date: Date.today
+      date: Date.today,
+      cost: rand(4..120),
+      driver_id: driver.id,
     }
     
     @trip = Trip.new(trip_data)
