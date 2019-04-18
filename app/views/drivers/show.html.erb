@@ -11,7 +11,10 @@
   Average Rating: <%= @driver.average_rating %>
 </p>
 <p>
-  Total Revenue: <%= @driver.total_revenue %>
+  Total Revenue: $<%= (@driver.total_revenue).round(2) %>
+</p>
+<p>
+  Status: <%= @driver.status %>
 </p>
 
 <%= link_to "Edit Driver", edit_driver_path(@driver.id) %>

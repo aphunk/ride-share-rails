@@ -45,6 +45,26 @@ class TripsController < ApplicationController
     end
   end
   
+  def destroy
+    trip_id = params[:id]
+    
+    trip = Trip.find_by(id: trip_id)
+    
+      unless trip
+        head :not_found
+        return
+      end
+      
+    successful = trip.destroy
+   
+    if successful
+      flash[:info] = "Event deleted" 
+
+      redirect_to :back
+
+    end
+  end
+  
   private
 
   def trip_params

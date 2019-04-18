@@ -3,10 +3,9 @@
 <h4>
 <%= @passenger.name %>
 </h4>
-<p>ID:  <%= @passenger.id %></p>
-<p>
-  Phone number: <%= @passenger.phone_num %>
-</p>
+<p>ID: <%= @passenger.id %></p>
+<p>Phone number: <%= @passenger.phone_num %></p>
+<p>Total spent: $<%= (@passenger.total_spent).round(2) %></p>
 
 <%= link_to "Edit passenger", edit_passenger_path(@passenger.id) %>
 <%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> 
@@ -29,6 +28,7 @@
         <td><%= trip.date %></td>
         <td><%= trip.rating %></td>
         <td>$<%= trip.cost %></td>
+        <td><%= link_to "Edit Trip", passenger_trips_path(@passenger.id), method: :post %>
       </tr>
     <% end %>
 </table>
