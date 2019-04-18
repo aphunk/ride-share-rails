@@ -1,5 +1,20 @@
 <h2>New Driver Form</h2>
 
+<% if @driver.errors.messages.any? %>
+  <section class="error-messages">
+    There were some issues with your submission
+    <ul>
+      <% @driver.errors.messages.each do |column, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <%= column %>: <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
 <%= form_with model: @driver, class: 'form' do |f|%>
     <p>Please fill out this driver's information</p>
     

@@ -11,3 +11,14 @@
 <%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> 
 <%= link_to "New trip", new_passenger_trip_path(@passenger.id) %>
 
+<h3>Trips</h3>
+<ul class="trip-data">
+  <% @passenger.trips.each do |trip|%>
+    <li><%= trip.id %></li>
+    <li><%= trip.driver_id %></li>
+    <li><%= trip.passenger_id %></li>
+    <li><%= trip.date %></li>
+    <li><%= trip.rating %></li>
+    <li>$<%= trip.cost %></li>
+  <% end %>
+</ul>
