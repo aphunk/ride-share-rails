@@ -1,4 +1,9 @@
 class TripsController < ApplicationController
+  def index
+    @passenger = Passenger.find_by(id: params[:passenger_id])
+    @passenger.trips.all
+  end
+  
   def show
     trip_id = params[:id]
 
@@ -35,13 +40,31 @@ class TripsController < ApplicationController
       driver_id: driver.id,
     }
     
+    @passenger = Passenger.find(params[:passenger_id])
     @trip = Trip.new(trip_data)
     
     successful = @trip.save
     if successful
-      redirect_to passenger_path(params[:passenger_id])
+      redirect_to passenger_path(@passenger)
     else
       render :new, status: :bad_request
+    end
+  end
+  
+  def edit
+    trip_id = params[:id]
+    @passenger = Passenger.find(params[:passenger_id])
+    
+    @trip = Trip.find_by(id: trip_id)
+  end
+  
+  def update
+    @trip = Trip.find_by(id: params[:id])
+    
+    if @trip.update(trip_params)
+      redirect_to passenger_trips_path(@trip.passenger_id)
+    else
+      render :edit, status: :bad_request
     end
   end
   

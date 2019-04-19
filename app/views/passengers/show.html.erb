@@ -7,28 +7,10 @@
 <p>Phone number: <%= @passenger.phone_num %></p>
 <p>Total spent: $<%= (@passenger.total_spent).round(2) %></p>
 
-<%= link_to "Edit passenger", edit_passenger_path(@passenger.id) %>
-<%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> 
-<%= link_to "Request trip", passenger_trips_path(@passenger.id), method: :post %>
+<div class="actions">
+  <%= link_to "View trip history", passenger_trips_path(@passenger.id) %>
+  <%= link_to "Edit passenger", edit_passenger_path(@passenger.id) %>
+  <%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> 
+  <%= link_to "Request trip", passenger_trips_path(@passenger.id), method: :post %>
+</div>
 
-<h3>Trips</h3>
-<table class="trip-data">
-  <colgroup span="5"></colgroup>
-    <tr>
-      <th>Trip ID</th>
-      <th>Driver</th>
-      <th>Date</th>
-      <th>Rating</th>
-      <th>Cost</th>
-    </tr>
-    <% @passenger.trips.each do |trip|%>
-      <tr>
-        <td><%= trip.id %></td>
-        <td><%= Driver.find_by(id: trip.driver_id).name %></td>
-        <td><%= trip.date %></td>
-        <td><%= trip.rating %></td>
-        <td>$<%= trip.cost %></td>
-        <td><%= link_to "Edit Trip", passenger_trips_path(@passenger.id), method: :post %>
-      </tr>
-    <% end %>
-</table>

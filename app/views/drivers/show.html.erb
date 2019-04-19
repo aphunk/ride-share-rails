@@ -17,8 +17,10 @@
   Status: <%= @driver.status %>
 </p>
 
-<%= link_to "Edit Driver", edit_driver_path(@driver.id) %>
-<%= link_to "Delete", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure?"} %>
+<div class="actions">
+  <%= link_to "Edit Driver", edit_driver_path(@driver.id) %>
+  <%= link_to "Delete", driver_path(@driver.id), method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
 
 <h3>Trips</h3>
 <table class="trip-data">

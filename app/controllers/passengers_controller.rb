@@ -25,7 +25,7 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find_by(id: params[:id])
 
     unless @passenger
-      redirect_to passengers_path, :flash => { :error => "Could not find passenger with id: #{passenger_id}" }
+      redirect_to passengers_path, :flash => { :error => "Could not find passenger with id: #{@passenger.id}" }
       return
     end
 

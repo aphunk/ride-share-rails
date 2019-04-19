@@ -1,0 +1,26 @@
+<h1>Trip Details</h1>
+
+<h3>Trips</h3>
+<table class="trip-data">
+  <colgroup span="5"></colgroup>
+    <tr>
+      <th>Trip ID</th>
+      <th>Driver</th>
+      <th>Date</th>
+      <th>Rating</th>
+      <th>Cost</th>
+    </tr>
+    <% @passenger.trips.each do |trip|%>
+      <tr>
+        <td><%= trip.id %></td>
+        <td><%= Driver.find_by(id: trip.driver_id).name %></td>
+        <td><%= trip.date %></td>
+        <td><%= trip.rating %></td>
+        <td>$<%= trip.cost %></td>
+        <td><%= link_to "Edit Trip", edit_passenger_trip_path(id: trip.id) %>
+      </tr>
+    <% end %>
+</table>
+
+
+

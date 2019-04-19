@@ -1,0 +1,48 @@
+<h1>Trip Details</h1>
+
+<% if @trip.errors.messages.any? %>
+  <section class="error-messages">
+    There were some issues with your submission
+    <ul>
+      <% @trip.errors.messages.each do |column, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <%= column %>: <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+
+<table class="trip-data">
+  <colgroup span="5"></colgroup>
+    <tr>
+      <th>Trip ID</th>
+      <th>Driver</th>
+      <th>Date</th>
+      <th>Cost</th>
+    </tr>
+   
+    <tr>
+      <td><%= @trip.id %></td>
+      <td><%= Driver.find_by(id: @trip.driver_id).name %></td>
+      <td><%= @trip.date %></td>
+      <td>$<%= @trip.cost %></td>
+    </tr>
+</table>
+<br>
+<div>
+  <%= form_with model: @trip do |f| %>
+
+    <%= f.label :rating %>
+    <%= f.text_field :rating %>
+      
+    <%= f.submit "Update!", method: :patch %>
+  <% end %>
+</div>
+
+
+
+
