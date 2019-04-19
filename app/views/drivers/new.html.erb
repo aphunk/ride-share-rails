@@ -1,33 +1,35 @@
 <h2>New Driver Form</h2>
+<div class="form-container">
 
-<% if @driver.errors.messages.any? %>
-  <section class="error-messages">
-    There were some issues with your submission
-    <ul>
-      <% @driver.errors.messages.each do |column, problem_list| %>
-        <% problem_list.each do |problem| %>
-          <li>
-            <%= column %>: <%= problem %>
-          </li>
+  <% if @driver.errors.messages.any? %>
+    <section class="error-messages">
+      There were some issues with your submission
+      <ul>
+        <% @driver.errors.messages.each do |column, problem_list| %>
+          <% problem_list.each do |problem| %>
+            <li>
+              <%= column %>: <%= problem %>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-  </section>
-<% end %>
+      </ul>
+    </section>
+  <% end %>
 
-<%= form_with model: @driver, class: 'form' do |f|%>
-    <p>Please fill out this driver's information</p>
-    
-    <div>
-        <%= f.label :name, "Please enter the new driver" %>
-        <%= f.text_field :name, placeholder: "Driver Name" %>
-    </div>
+  <%= form_with model: @driver, class: 'form' do |f|%>
+      <p>Please fill out this driver's information</p>
+      
+      <div>
+          <strong><%= f.label :name, "Name" %></strong>
+          <%= f.text_field :name, placeholder: "Driver Name" %>
+      </div>
 
-    <div>
-        <%= f.label :vin %>
-        <%= f.text_field :vin, placeholder: "Vin Number"%>
-    </div>
+      <div>
+          <strong><%= f.label :vin, "Vin" %></strong>
+          <%= f.text_field :vin, placeholder: "Vin Number"%>
+      </div>
 
-    <%= f.submit "Submit" %>
+      <%= f.submit "Submit" %>
 
-<% end %>
+  <% end %>
+</div>  
