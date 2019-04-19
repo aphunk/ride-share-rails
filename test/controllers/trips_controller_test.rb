@@ -66,40 +66,50 @@ describe "TripsController" do
       update_trip = Trip.find_by(id: trip.id)
       expect(update_trip.rating).must_equal trip_data[:trip][:rating]
     end
-
-    it "will respond with bad request when attempting to edit a nonexistant trip" do
-      passenger = Passenger.create(name: "Test Passenger", phone_num: "2065502929")
-      patch passenger_trip_path(passenger_id: passenger.id, id: -1)
-
-      # Assert
-      must_respond_with :redirect
-      expect(flash[:error]).must_equal "Could not find trip with id: -1"
-    end
   end
 
   describe "create" do
-    # it "creates a new trip" do
-    #   passenger = Passenger.create(name: "Test Passenger", phone_num: "2065502929")
-    #   driver = Driver.create(name: "Test Driver", vin: "01234567890123456")
-    #   trip = Trip.create(passenger_id: passenger.id, driver_id: driver.id)
+    it "creates a new trip" do
+      passenger = Passenger.create(name: "Test Passenger", phone_num: "2065502929")
+      passenger_id = passenger.id
+      driver = Driver.create(name: "Test Driver", vin: "01234567890123456", status: "available")
 
-    #   # Act
-    #   expect {
-    #     post passenger_trips_path(passenger_id: passenger.id)
-    #   }.must_change "Trip.count", +1
+      trip_data = {
+        passenger_id: passenger.id, driver_id: driver.id,
+      }
 
-    #   # Assert
-    #   must_respond_with :redirect
-    #   must_redirect_to trips_path
+      # Act
+      expect {
+        post passenger_trips_path(passenger_id), params: trip_data
+      }.must_change "Trip.count", +1
 
-    #   trip = Trip.last
-    #   expect(trip.passenger_id).must_equal passenger.id
-    #   expect(trip.driver_id).must_equal driver.id
-    #   expect(trip.rating).must_be_nil
-    # end
+      # Assert
+      trip = Trip.last
+      must_respond_with :redirect
+      must_redirect_to passenger_trips_path(trip.passenger_id)
+
+      expect(trip.passenger_id).must_equal passenger.id
+      expect(trip.driver_id).must_equal driver.id
+      expect(trip.rating).must_be_nil
+    end
   end
 
   describe "destroy" do
-    # Your tests go here
+    it "removes the Trip from the database" do
+      passenger = Passenger.create(name: "Test Passenger", phone_num: "2065502929")
+      driver = Driver.create(name: "Test Driver", vin: "01234567890123456")
+      trip = Trip.create(passenger_id: passenger.id, driver_id: driver.id)
+      # Act
+      expect {
+        delete passenger_trip_path(passenger_id: passenger.id, id: trip.id)
+      }.must_change "Trip.count", -1
+
+      # Assert
+      must_respond_with :redirect
+      must_redirect_to passenger_trips_path(passenger_id: passenger.id)
+
+      after_trip = Trip.find_by(id: trip.id)
+      expect(after_trip).must_be_nil
+    end
   end
 end

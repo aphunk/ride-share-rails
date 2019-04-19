@@ -45,7 +45,7 @@ class TripsController < ApplicationController
 
     successful = @trip.save
     if successful
-      redirect_to passenger_path(@passenger)
+      redirect_to passenger_trips_path(@passenger)
     else
       render :new, status: :bad_request
     end
@@ -74,7 +74,7 @@ class TripsController < ApplicationController
 
   def destroy
     trip_id = params[:id]
-
+    passenger_id = params[:passenger_id]
     trip = Trip.find_by(id: trip_id)
 
     unless trip
@@ -87,7 +87,7 @@ class TripsController < ApplicationController
     if successful
       flash[:info] = "Event deleted"
 
-      redirect_to :back
+      redirect_to passenger_trips_path(passenger_id: passenger_id)
     end
   end
 
@@ -95,5 +95,5 @@ class TripsController < ApplicationController
 
   def trip_params
     return params.require(:trip).permit(:driver_id, :passenger_id, :rating)
-  end 
+  end
 end

@@ -19,12 +19,12 @@
     <p>Please enter the information you would like to edit</p>
     
     <div>
-        <%= f.label :name, 'Please enter the desired name' %>
+        <strong><%= f.label :name, 'Name:' %></strong>
         <%= f.text_field :name %>
-    </div>
+    </div><br>
 
     <div>
-        <%= f.label 'Please enter the desired VIN number' %>
+        <strong><%= f.label 'VIN number:' %></strong>
         <%= f.text_field :vin %>
     </div>
 

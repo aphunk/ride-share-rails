@@ -12,6 +12,16 @@ img {
   display: block;
 }
 
+header {
+  display: flex;
+  padding: 1.5rem;
+}
+
+header img {
+  width: 100px;
+  margin-left: auto;
+}
+
 a {
   color: rgb(57, 198, 233);
   text-decoration: none;
@@ -26,7 +36,6 @@ nav {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  color: white;
 }
 
 nav a {
@@ -35,11 +44,12 @@ nav a {
 
 nav ul {
   display: inline;
+  margin-right: auto;
 }
 
 nav ul li {
   display: inline;
-  margin-left: auto;
+  align-self: flex-end
 }
 
 ul {
@@ -55,7 +65,7 @@ display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
-  color: #272727;
+  color: #2e2e2e;
   margin: 2rem;
   padding: 1rem;
 }
@@ -136,6 +146,23 @@ input[type=text] {
   border-bottom: .5px solid gray; 
 }
 
+input[type=submit] {
+  background-color: #272727;
+  width: 10rem;
+  height: 3rem;
+  margin-top: 3rem;
+}
+
+input[type=submit] {
+  font-size: 16px;
+  color: white;
+  border: none;
+}
+
+input[type=submit]:hover {
+  background-color: #424242;
+}
+
 div.form-container {
   display: flex;
   flex-flow: column wrap;
@@ -145,3 +172,25 @@ div.form-container {
 div.form-container div {
   margin: 2rem 0;
 }
+
+ul.home {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+li.home {
+  background-color: #272727;
+  width: 20rem;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  letter-spacing: 2px;
+}
+
+
