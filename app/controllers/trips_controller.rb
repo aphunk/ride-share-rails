@@ -97,3 +97,4 @@ class TripsController < ApplicationController
     return params.require(:trip).permit(:driver_id, :passenger_id, :rating)
   end 
 
+end

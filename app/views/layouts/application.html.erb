@@ -14,11 +14,10 @@
   </head>
 
   <body>
+    <header>
+    <%= link_to image_tag('ride-connect-logo.png'), root_path %> <a href="/"></a>
       <nav>
         <ul>
-          <li >
-            <%= link_to "Home", root_path %>
-          </li>
           <li >
             <%= link_to "Passengers", passengers_path %>
           </li>
@@ -33,7 +32,7 @@
           </li>
         </ul>
       </nav>
-
+    </header>
     <main>
       <%= yield %>
     </main>
