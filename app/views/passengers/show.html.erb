@@ -11,6 +11,9 @@
   <%= link_to "View trip history", passenger_trips_path(@passenger.id) %>
   <%= link_to "Edit passenger", edit_passenger_path(@passenger.id) %>
   <%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you sure?"} %> 
-  <%= link_to "Request trip", passenger_trips_path(@passenger.id), method: :post %>
+  <%# <%= link_to "Request trip", passenger_trips_path(@passenger.id), method: :post %> 
 </div>
 
+<%= button_to "Request Trip", passenger_trips_path(@passenger.id) %>
+<form method="patch" action="/passengers/:passenger_id/trips/new" class="button_to">
+</form>

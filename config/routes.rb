@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   
   resources :trips, only: [:edit, :update, :destroy]
+  patch "/passengers/:passenger_id/trips/:id", to: "trips#update"
 end

@@ -39,9 +39,13 @@
     <%= f.label :rating %>
     <%= f.text_field :rating %>
       
-    <%= f.submit "Update!", method: :patch %>
+    <%= f.submit "Update!", method: :post %>
   <% end %>
 </div>
+
+<%= button_to "Update Rating", passenger_trip_path(@passenger.id) %>
+<form method="patch" action="/passengers/:passenger_id/trips/:id" class="button_to">
+</form>
 
 
 
