@@ -1,18 +1,21 @@
+
 <h2>New Passenger Form</h2>
+    <div class="form-container">
 
-<%= form_with model: @passenger, class: 'passenger-form' do |f|%>
-    <p>Please fill out this passenger's information</p>
-    
-    <div>
-        <%= f.label :name, "Please enter the new passenger" %>
-        <%= f.text_field :name, placeholder: "Passenger Name" %>
-    </div>
+    <%= form_with model: @passenger, class: 'passenger-form' do |f|%>
+        <p>Please fill out this passenger's information</p>
+        
+        <div>
+            <strong><%= f.label :name, "Name:" %></strong>
+            <%= f.text_field :name, placeholder: "Passenger Name" %>
+        </div>
 
-    <div>
-        <%= f.label :phone_num, "Please enter phone number" %>
-        <%= f.text_field :phone_num, placeholder: "Phone Number"%>
-    </div>
+        <div>
+            <strong><%= f.label :phone_num, "Phone number:" %></strong>
+            <%= f.text_field :phone_num, placeholder: "Phone Number"%>
+        </div>
 
-    <%= f.submit "Submit" %>
+        <%= f.submit "Submit" %>
 
-<% end %>
+    <% end %>
+</div>
