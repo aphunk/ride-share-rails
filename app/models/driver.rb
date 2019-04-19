@@ -17,6 +17,7 @@ class Driver < ApplicationRecord
   end
 
   def average_rating
+    return 0 if trips.length == 0
     total = 0
 
     trips.each do |trip|
