@@ -94,11 +94,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-<<<<<<< HEAD
     return params.require(:trip).permit(:driver_id, :passenger_id, :rating)
   end 
-=======
-    return params.require(:trip).permit(:driver_id, :passenger_id)
-  end
->>>>>>> origin
 end
